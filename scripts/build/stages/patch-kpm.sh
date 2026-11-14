@@ -13,11 +13,8 @@ for definition in SUKISU_KPM_ABI_VERSION SUKISU_KPM_SUPERCALL_MAGIC SUKISU_KPM_S
   grep -Fqx "$(grep -E "^#define $definition " "$sukisu_header")" "$kernelpatch_header"
 done
 
-clang="$BUILD_ROOT/toolchains/clang/bin"
 export SOURCE_DATE_EPOCH="$(git -C "$source_dir" show -s --format=%ct HEAD)"
-make -C "$source_dir/kernel" -j"$BUILD_JOBS" TARGET_COMPILE=aarch64-linux-gnu- \
-  "CC=$clang/clang --target=aarch64-linux-gnu" "LD=$clang/ld.lld" \
-  "OBJCOPY=$clang/llvm-objcopy" kpimg
+make -C "$source_dir/kernel" -j"$BUILD_JOBS" "TARGET_COMPILE=$KERNELPATCH_CROSS_PREFIX" kpimg
 make -C "$source_dir/tools" -j"$BUILD_JOBS" CC=gcc kptools
 
 image="kernel_experiment/$SELECTED_OUT/arch/arm64/boot/Image"

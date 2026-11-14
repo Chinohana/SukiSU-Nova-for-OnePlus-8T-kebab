@@ -115,8 +115,11 @@ def preflight(args):
     if args.enable_kpm:
         if not shutil.which('gcc'):
             raise ValueError('Missing KPM dependency: gcc')
-        if not os.access(args.clang / 'bin/llvm-objcopy', os.X_OK):
-            raise ValueError('Missing Clang tool: llvm-objcopy')
+        kpm_bin = args.workspace / 'toolchains' / p['KERNELPATCH_TOOLCHAIN'] / 'bin'
+        for tool in ('gcc', 'ld', 'objcopy'):
+            path = kpm_bin / f'aarch64-none-elf-{tool}'
+            if not os.access(path, os.X_OK):
+                raise ValueError(f'Missing KernelPatch toolchain executable: {path}')
     if args.enable_susfs == 'true':
         if not os.access(args.ndk / 'ndk-build', os.X_OK):
             raise ValueError('Missing Linux NDK')
@@ -212,6 +215,9 @@ def build(args):
                'ANDROID_NDK_ROOT': str(args.ndk), 'USE_INCREMENTAL': args.use_incremental,
                'BUILD_OBJECT_CACHE': str(args.object_cache_dir),
                'BUILD_LTO_CACHE': str(args.lto_cache_dir)}
+        if args.enable_kpm:
+            env['KERNELPATCH_CROSS_PREFIX'] = str(args.workspace / 'toolchains' / p['KERNELPATCH_TOOLCHAIN']
+                                                 / 'bin/aarch64-none-elf-')
         # Actions variables from a parent shell must not change local execution.
         env = {k: v for k, v in env.items() if not k.startswith('GITHUB_')}
         for name in ('INCREMENTAL_ACTIVE', 'COMPILE_TREE', 'COMPILE_OUT', 'BUILD_LD', 'REAL_LD', 'THINLTO_CACHE_DIR'):
