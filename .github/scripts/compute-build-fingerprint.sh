@@ -74,6 +74,10 @@ inputs="$output_dir/build-inputs.txt"
   echo "susfs_profile=$susfs_profile"
   echo "enable_selinux_hide=$enable_selinux_hide"
   echo "use_anykernel=$use_anykernel"
+  if test "${ENABLE_KPM:-false}" = true; then
+    echo "kernelpatch_repository=$KERNELPATCH_REPOSITORY"
+    echo "kernelpatch_commit=$KERNELPATCH_COMMIT"
+  fi
   cat "$file_hashes"
 } > "$inputs"
 

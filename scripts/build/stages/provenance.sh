@@ -99,7 +99,14 @@ fi
   fi
   echo "hook=manual-inline-combined"
   echo "kprobes=n"
-  echo "kpm=n"
+  if test "${ENABLE_KPM:-false}" = true; then
+    echo "kpm=y"
+    echo "kernelpatch_repository=$KERNELPATCH_REPOSITORY"
+    echo "kernelpatch_commit=$KERNELPATCH_COMMIT"
+    cat audit/kernelpatch.sha256
+  else
+    echo "kpm=n"
+  fi
   echo "selinux_policy_modified=n"
   echo "ramdisk_modified=n"
   echo "dtb_modified=n"

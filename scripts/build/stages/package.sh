@@ -28,6 +28,10 @@ if test "$ENABLE_SELINUX_HIDE" = "true"; then
   feature_tags="${feature_tags}-hide"
   string_feature="${string_feature} SELinux hide"
 fi
+if test "${ENABLE_KPM:-false}" = true; then
+  feature_tags="${feature_tags}-KPM"
+  string_feature="${string_feature} KPM"
+fi
 sed -i \
   "s/^kernel.string=.*/kernel.string=${BUILD_CHANNEL^^} SukiSU Nova kebab LOS${ROM_VERSION} ${string_feature} KSU${SUKISU_DRIVER_VERSION}/" \
   AnyKernel3/anykernel.sh

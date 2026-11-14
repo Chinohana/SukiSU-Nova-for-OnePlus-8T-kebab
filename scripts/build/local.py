@@ -112,6 +112,11 @@ def preflight(args):
     clang_build = f"Android ({p['CLANG_BUILD_NUMBER']}, based on {p['CLANG_REVISION'].removeprefix('clang-')})"
     if clang_build not in clang_version:
         raise ValueError(f'Clang version does not match pins: expected {clang_build}')
+    if args.enable_kpm:
+        if not shutil.which('gcc'):
+            raise ValueError('Missing KPM dependency: gcc')
+        if not os.access(args.clang / 'bin/llvm-objcopy', os.X_OK):
+            raise ValueError('Missing Clang tool: llvm-objcopy')
     if args.enable_susfs == 'true':
         if not os.access(args.ndk / 'ndk-build', os.X_OK):
             raise ValueError('Missing Linux NDK')
@@ -202,6 +207,7 @@ def build(args):
                'BUILDER_COMMIT': commit, 'BUILD_CHANNEL': 'candidate', 'LOCAL_RUN_ID': run_id,
                'EXECUTION_ENVIRONMENT': 'local-wsl2', 'ENABLE_SUSFS': args.enable_susfs,
                'ENABLE_SELINUX_HIDE': args.enable_selinux_hide, 'USE_ANYKERNEL': args.use_anykernel,
+               'ENABLE_KPM': 'true' if args.enable_kpm else 'false',
                'USE_CCACHE': args.use_ccache, 'SUSFS_PROFILE': args.profile, 'BUILD_JOBS': str(args.jobs),
                'ANDROID_NDK_ROOT': str(args.ndk), 'USE_INCREMENTAL': args.use_incremental,
                'BUILD_OBJECT_CACHE': str(args.object_cache_dir),
@@ -243,6 +249,8 @@ def build(args):
         stages += ['compile']
         if args.use_ccache == 'true':
             stages += ['cache-stats']
+        if args.enable_kpm:
+            stages += ['patch-kpm']
         stages += ['audit-build']
         if args.enable_susfs == 'true':
             stages += ['tool']
@@ -336,6 +344,7 @@ def main():
     for option in ('enable-susfs', 'enable-selinux-hide', 'use-anykernel', 'use-ccache'):
         parser.add_argument('--' + option, choices=['true', 'false'] if option == 'use-ccache' else ['true'], default='true')
     parser.add_argument('--kernel-source', choices=['approved-pin', 'latest-lineage-24.0'], default='approved-pin')
+    parser.add_argument('--enable-kpm', action='store_true', help='Build an experimental KPM candidate')
     parser.add_argument('--check-only', action='store_true')
     parser.add_argument('--export-run', type=Path, help='Retry export of a completed run without rebuilding')
     args = parser.parse_args()

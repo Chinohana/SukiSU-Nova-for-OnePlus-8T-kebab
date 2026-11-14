@@ -37,9 +37,19 @@ def verify(root):
     for option in ('KSU', 'SECURITY_SELINUX'):
         if f'CONFIG_{option}=y' not in config:
             raise ValueError(f'Missing {option}')
-    for option in ('KPROBES', 'KPM'):
-        if f'# CONFIG_{option} is not set' not in config:
-            raise ValueError(f'Unexpected {option}')
+    if '# CONFIG_KPROBES is not set' not in config:
+        raise ValueError('Unexpected KPROBES')
+    kpm = fields.get('kpm', 'n')
+    if kpm not in ('y', 'n') or (
+        ('CONFIG_KPM=y' if kpm == 'y' else '# CONFIG_KPM is not set') not in config
+    ):
+        raise ValueError('KPM configuration does not match provenance')
+    if kpm == 'y':
+        record = (kernel / 'audit/kernelpatch.sha256').read_text()
+        if (not re.fullmatch(r'[0-9a-f]{40}', fields.get('kernelpatch_commit', ''))
+                or record.rstrip() not in provenance_bytes.decode()
+                or f"{expected['Image']}  Image.kpm" not in record.splitlines()):
+            raise ValueError('KernelPatch evidence does not match provenance')
     for field, option in [('enable_susfs', 'KSU_SUSFS'), ('enable_selinux_hide', 'KSU_SELINUX_HIDE_4_19')]:
         enabled = f'CONFIG_{option}=y' in config
         if enabled != (fields[field] == 'true'):

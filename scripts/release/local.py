@@ -48,6 +48,8 @@ def check_run(root, candidate, susfs, profile, hide):
     if any(f'CONFIG_{option}=y' not in config for option in FULL_OPTIONS):
         raise ValueError('Full-feature release configuration is incomplete')
     provenance = fields(root)
+    if provenance.get('kpm') == 'y':
+        raise ValueError('KPM candidates require runtime validation before entering the release pipeline')
     head = fingerprints.git(candidate, 'rev-parse', 'HEAD').decode().strip()
     if subprocess.run(['git', '-C', str(candidate), 'diff', '--quiet', 'HEAD', '--'], check=False).returncode:
         raise ValueError('Candidate tracked files differ from the build snapshot')

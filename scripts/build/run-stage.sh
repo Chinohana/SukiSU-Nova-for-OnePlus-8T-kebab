@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 stage="${1:?build stage required}"
 case "$stage" in
-  baseline-identity|fingerprint|references|patch-preflight|source|patches|audit-hide|audit-susfs|audit-hooks|configure|cache-configure|compile|cache-stats|audit-build|tool|package|raw|provenance) ;;
+  baseline-identity|fingerprint|references|patch-preflight|source|patches|audit-hide|audit-susfs|audit-hooks|configure|cache-configure|compile|cache-stats|patch-kpm|audit-build|tool|package|raw|provenance) ;;
   *) echo "Unknown build stage: $stage" >&2; exit 2 ;;
 esac
 export BUILD_ROOT="${BUILD_ROOT:-${GITHUB_WORKSPACE:-$PWD}}"
