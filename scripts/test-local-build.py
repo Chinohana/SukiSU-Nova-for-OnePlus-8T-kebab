@@ -112,7 +112,7 @@ class Preflight(unittest.TestCase):
                 executable.touch()
                 executable.chmod(0o755)
             (root / 'source.properties').write_text('Pkg.Revision = 0\n')
-            args = SimpleNamespace(workspace=root, clang=root, ndk=root, enable_susfs='true')
+            args = SimpleNamespace(workspace=root, clang=root, ndk=root, enable_susfs='true', enable_kpm=False)
             pins = local.pins(local.ROOT)
             revision = pins['CLANG_REVISION'].removeprefix('clang-')
             clang_version = f"Android ({pins['CLANG_BUILD_NUMBER']}, based on {revision})"
