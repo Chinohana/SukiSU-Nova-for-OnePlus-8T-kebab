@@ -27,4 +27,4 @@ python3 scripts/repackage-anykernel.py \
 - 修复 ZIP SHA-256：`936936cba4cd281c07d051e57a13af3f6449defe9721a2ffb6d66c2e2a983a44`
 - 两包 Image SHA-256：`f33876485b3a6b5dddc3916e7af5a975d498d5d316af4074e4a1e4609d156a4b`
 
-本地发布工具复核原构建、修复 ZIP、唯一变化成员、对应提交的补丁、安装函数测试和真机记录后，验收通过。正式发布为 [v2026.10.28-ksu41095](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/tag/v2026.10.28-ksu41095)。公开安装附件使用便于下载的文件名，ZIP 字节与上述 AK3fix 包一致，SHA-256 不变。46 项本地回归通过，远端全部六个附件的 SHA-256 与本地发布目录逐一一致。
+本地发布工具复核原构建、修复 ZIP、唯一变化成员、对应提交的补丁、安装函数测试和真机记录后，验收通过。正式发布为 [v2026.10.28-ksu41095](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/tag/v2026.10.28-ksu41095)。公开安装附件使用便于下载的文件名，ZIP 字节与上述 AK3fix 包一致，SHA-256 不变。46 项本地回归通过，远端全部六个附件的 SHA-256 与本地发布目录逐一一致。

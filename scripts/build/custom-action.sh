@@ -2,7 +2,7 @@
 # Build one user-selected configuration in a user's GitHub repository.
 set -Eeuo pipefail
 test "${GITHUB_ACTIONS:-}" = true
-test "$GITHUB_REPOSITORY" != Chinohana/oneplus-8t-kebab-sukisu-ultra-actions
+test "$GITHUB_REPOSITORY_ID" != 1315219539
 export BUILD_ROOT="$GITHUB_WORKSPACE"
 export BUILD_TEMP="$RUNNER_TEMP/kernel-build"
 export BUILD_ENV="$BUILD_TEMP/environment"

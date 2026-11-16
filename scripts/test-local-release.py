@@ -200,7 +200,7 @@ class MaintainedBuildPolicy(unittest.TestCase):
         build = (workflow / 'build-sukisu-nova.yml').read_text()
         for trigger in ('  push:', '  pull_request:', '  workflow_call:'):
             self.assertNotIn(trigger, build)
-        self.assertIn("if: github.repository != 'Chinohana/oneplus-8t-kebab-sukisu-ultra-actions'", build)
+        self.assertIn("if: github.repository_id != '1315219539'", build)
         self.assertIn('run: bash scripts/build/custom-action.sh', build)
         for file in workflow.glob('*.yml'):
             text = file.read_text()

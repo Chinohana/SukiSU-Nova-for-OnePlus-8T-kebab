@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 workspace="${BUILD_WORKSPACE:-$HOME/oneplus8t-kernel}"
-repository="${BUILDER_REPOSITORY:-https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions.git}"
+repository="${BUILDER_REPOSITORY:-https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab.git}"
 ref="${1:-main}"
 mkdir -p "$workspace"/{src,toolchains,out,cache,audit,runs}
 test "$(findmnt -n -T "$workspace" -o FSTYPE)" = ext4
