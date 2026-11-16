@@ -24,4 +24,4 @@ Clang 归档 SHA-256 为 `b488c87a39b42c4d50c79a6d44969599f35a03d17c161a3073ea08
 
 WSL 构建 `local-full-20261116-161412` 使用 builder `ea90d19fce97c5874fa51f9fad11aaee4626b7a3`，完成单一 `extended-full + SELinux hide` Image 的编译、审计、打包和导出校验。导出的配置启用了 SUSFS、priority UID filter 和 4.19 SELinux hide，KPM 关闭。
 
-Image SHA-256 为 `10547b870310e0f8e703a908438ee9294454fb375e85b369dc3a92d1f44ea57d`，安装 ZIP SHA-256 为 `7aaf8dd70b31263078058d095201168c8773cd0fa8b84e6797e8382593e280f2`。该安装包仍是待真机验收的候选。
+Image SHA-256 为 `10547b870310e0f8e703a908438ee9294454fb375e85b369dc3a92d1f44ea57d`，安装 ZIP SHA-256 为 `7aaf8dd70b31263078058d095201168c8773cd0fa8b84e6797e8382593e280f2`。维护者确认 15 项真机检查全部通过，本地验收后发布 [v2026.11.16-ksu30000](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/tag/v2026.11.16-ksu30000)。

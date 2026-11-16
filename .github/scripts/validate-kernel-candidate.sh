@@ -40,7 +40,7 @@ needs_build=false
 while IFS= read -r file; do
   case "$file" in
     .gitattributes|.gitmodules|config/*|pins/kernel-lineage-*|\
-    .github/workflows/build-sukisu-ultra.yml|.github/scripts/*|patches/*.patch|scripts/build/*)
+    .github/workflows/build-sukisu-nova.yml|.github/scripts/*|patches/*.patch|scripts/build/*)
       needs_build=true
       ;;
   esac

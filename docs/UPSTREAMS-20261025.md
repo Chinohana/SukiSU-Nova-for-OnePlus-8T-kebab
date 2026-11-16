@@ -4,9 +4,9 @@
 
 ## Manager 与五位版本号
 
-最新 Release 为 `v4.2.1-r2`，Manager 附件版本号为 41068。最新成功的 [Build Manager 运行 40107510955](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions/runs/40107510955) 对应 main 提交 `72eea67e2307cb9d257a4bbd8dd6e64f10724bc5`，实际附件为 `SukiSU_v4.2.1-r2_41074-release.apk`。该运行的 determine-version 日志记录 main 提交数 3889，按上游公式计算为 `40000 + 3889 - 2815 = 41074`。
+最新 Release 为 `v4.2.1-r2`，Manager 附件版本号为 41068。最新成功的 [Build Manager 运行 40107510955](https://github.com/SukiSU-Nova/SukiSU-Nova/actions/runs/40107510955) 对应 main 提交 `72eea67e2307cb9d257a4bbd8dd6e64f10724bc5`，实际附件为 `SukiSU_v4.2.1-r2_41074-release.apk`。该运行的 determine-version 日志记录 main 提交数 3889，按上游公式计算为 `40000 + 3889 - 2815 = 41074`。
 
-[Release 到 Action 的差异](https://github.com/SukiSU-Ultra/SukiSU-Ultra/compare/v4.2.1-r2...72eea67e2307cb9d257a4bbd8dd6e64f10724bc5) 包含 6 个提交。其中 Manager 将主页、模块和 WebUI 工作移到后台，修复重新选择主页时的刷新和 SUSFS 配置空白处理，并将更新检查选项移到“关于”页面。按存在实质修复、功能或 UI 更新时选择 Action 的规则，本次驱动五位版本号固定为 **41074**。
+[Release 到 Action 的差异](https://github.com/SukiSU-Nova/SukiSU-Nova/compare/v4.2.1-r2...72eea67e2307cb9d257a4bbd8dd6e64f10724bc5) 包含 6 个提交。其中 Manager 将主页、模块和 WebUI 工作移到后台，修复重新选择主页时的刷新和 SUSFS 配置空白处理，并将更新检查选项移到“关于”页面。按存在实质修复、功能或 UI 更新时选择 Action 的规则，本次驱动五位版本号固定为 **41074**。
 
 驱动源码仍固定在 builtin `ce75122bec7423e0f1fa06e3e9a174085c5231ab`。Manager 的版本选择不改变驱动源码来源，也不代表已移植 main 的全部功能。
 

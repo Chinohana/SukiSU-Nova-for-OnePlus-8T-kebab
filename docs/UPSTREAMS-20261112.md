@@ -6,9 +6,9 @@ SukiSU builtin 从 `b16e899a555e9b96aa1225f049cd7274820ca5b8` 更新至 `6076949
 
 ## Manager 版本
 
-最新 Release 为 [v4.3.0-r2](https://github.com/SukiSU-Ultra/SukiSU-Ultra/releases/tag/v4.3.0-r2)，普通 APK 为 `SukiSU_v4.3.0-r2_41150-release.apk`，标签指向 `645ef9860b9b7f900bb5d1b27e224f2c311d39c0`。最新成功的主线正式签名 [Build Manager 42997964176](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions/runs/42997964176) 使用 main `3af6085d0d26e73ffd1a3e7b34362435dcfb5a03`；构建日志记录主线提交数 3991，`40000 + 3991 - 2815 = 41176`，APK 实际名称为 `SukiSU_v4.3.0-r2_41176-release.apk`。
+最新 Release 为 [v4.3.0-r2](https://github.com/SukiSU-Nova/SukiSU-Nova/releases/tag/v4.3.0-r2)，普通 APK 为 `SukiSU_v4.3.0-r2_41150-release.apk`，标签指向 `645ef9860b9b7f900bb5d1b27e224f2c311d39c0`。最新成功的主线正式签名 [Build Manager 42997964176](https://github.com/SukiSU-Nova/SukiSU-Nova/actions/runs/42997964176) 使用 main `3af6085d0d26e73ffd1a3e7b34362435dcfb5a03`；构建日志记录主线提交数 3991，`40000 + 3991 - 2815 = 41176`，APK 实际名称为 `SukiSU_v4.3.0-r2_41176-release.apk`。
 
-[Release 到 Action 的差异](https://github.com/SukiSU-Ultra/SukiSU-Ultra/compare/v4.3.0-r2...3af6085d0d26e73ffd1a3e7b34362435dcfb5a03) 包含主题商店、外观界面以及 Manager 安全和崩溃修复，故驱动版本与兼容补丁默认值固定为 **41176**。翻译 PR 的 Action 42997994991 生成 41178，但使用临时签名；按维护者要求不纳入版本选择或交付。
+[Release 到 Action 的差异](https://github.com/SukiSU-Nova/SukiSU-Nova/compare/v4.3.0-r2...3af6085d0d26e73ffd1a3e7b34362435dcfb5a03) 包含主题商店、外观界面以及 Manager 安全和崩溃修复，故驱动版本与兼容补丁默认值固定为 **41176**。翻译 PR 的 Action 42997994991 生成 41178，但使用临时签名；按维护者要求不纳入版本选择或交付。
 
 相对上一已交付 Manager 41124 的 main `56d45a19193a41bf42c8db655c9d2cfba44c48f1`，41176 包含功能、界面与修复更新，符合交付条件。普通主线 APK SHA-256 为 `5055e58f86b8b22c6368f65cccd05b8dc98afbcc594f532f30ee3ff85196675f`。Manager main 与 builtin 分支独立记录。
 

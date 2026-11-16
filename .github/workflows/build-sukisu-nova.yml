@@ -1,4 +1,4 @@
-name: Build kebab SukiSU Ultra
+name: Build kebab SukiSU Nova
 
 on:
   workflow_dispatch:

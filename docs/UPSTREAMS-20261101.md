@@ -6,9 +6,9 @@ SUSFS 从 `27e0a0e42745991ba09d6f96a97bf4b83f41a012` 更新到 `ee155a1ad4219804
 
 ## Manager
 
-最新 Release [v4.3.0](https://github.com/SukiSU-Ultra/SukiSU-Ultra/releases/tag/v4.3.0) 的普通 APK 为 `SukiSU_v4.3.0_41100-release.apk`，源码为 `e67b14e6bbbbd3e67f24df658a01d3e73a64159c`。最新成功的 [Build Manager 41221737517](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions/runs/41221737517) 对应 main `0fe8d052ab7f9c314f01c9d3451812115e424b69`；日志记录 3935 个 main 提交，`40000 + 3935 - 2815 = 41120`。
+最新 Release [v4.3.0](https://github.com/SukiSU-Nova/SukiSU-Nova/releases/tag/v4.3.0) 的普通 APK 为 `SukiSU_v4.3.0_41100-release.apk`，源码为 `e67b14e6bbbbd3e67f24df658a01d3e73a64159c`。最新成功的 [Build Manager 41221737517](https://github.com/SukiSU-Nova/SukiSU-Nova/actions/runs/41221737517) 对应 main `0fe8d052ab7f9c314f01c9d3451812115e424b69`；日志记录 3935 个 main 提交，`40000 + 3935 - 2815 = 41120`。
 
-[Release 到 Action](https://github.com/SukiSU-Ultra/SukiSU-Ultra/compare/v4.3.0...0fe8d052ab7f9c314f01c9d3451812115e424b69) 包含主题包导入导出、文件关联、WebUI File 接口、动态管理器重复应用崩溃和缺失图标修复，故驱动及补丁默认版本选用 **41120**。builtin 与 Manager main 分别固定，不以 Manager 变化代替驱动源码核验。
+[Release 到 Action](https://github.com/SukiSU-Nova/SukiSU-Nova/compare/v4.3.0...0fe8d052ab7f9c314f01c9d3451812115e424b69) 包含主题包导入导出、文件关联、WebUI File 接口、动态管理器重复应用崩溃和缺失图标修复，故驱动及补丁默认版本选用 **41120**。builtin 与 Manager main 分别固定，不以 Manager 变化代替驱动源码核验。
 
 相对上一交付 Manager 41097 的 main `080ba098902c1ea8f09748536f9d920329e2f7ce`，上述修复和 UI 功能属于实质更新，因此本次下载普通 Manager：`SukiSU_v4.3.0_41120-release.apk`，SHA-256 为 `b95520220660df90d4cb4d3e6ab924aac5c820016ef6c350fd107539da8e1d74`。
 

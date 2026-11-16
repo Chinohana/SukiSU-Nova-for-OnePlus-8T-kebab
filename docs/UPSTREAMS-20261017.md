@@ -19,7 +19,7 @@
 
 ## Manager 与 4.19 兼容
 
-[Manager 构建 38760810020](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions/runs/38760810020) 的普通产物为 `SukiSU_v4.2.1_41001-release.apk`，SHA-256：
+[Manager 构建 38760810020](https://github.com/SukiSU-Nova/SukiSU-Nova/actions/runs/38760810020) 的普通产物为 `SukiSU_v4.2.1_41001-release.apk`，SHA-256：
 
 ```text
 cd4945d3f4491ea2869ed374887202c85154a86205dd04d81991bf4dc4340d6f

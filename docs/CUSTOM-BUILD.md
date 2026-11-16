@@ -6,7 +6,7 @@
 
 1. 在 GitHub Fork 本项目。也可以先 `git clone`，再将源码推送到自己有写权限的 GitHub 仓库；仅本地克隆不会运行 Actions。
 2. 在自己的仓库打开 **Actions**，按 GitHub 提示启用工作流。
-3. 选择 **Build kebab SukiSU Ultra**，点击 **Run workflow**，选择包含当前构建工具的分支。
+3. 选择 **Build kebab SukiSU Nova**，点击 **Run workflow**，选择包含当前构建工具的分支。
 4. 按需设置 SUSFS、SUSFS profile 和 SELinux hide。默认值仍为 SUSFS 开启、`extended-full`、SELinux hide 开启。
 5. 完成后，在该次运行的 **Artifacts** 下载产物。构建失败时查看日志和诊断附件。
 

@@ -4,15 +4,15 @@
 
 ## builtin 扩展 ABI
 
-[builtin 新增提交](https://github.com/SukiSU-Ultra/SukiSU-Ultra/commit/b59170724cdc05bf5dee8d8a8b182c5f1ddd60e3) 发布 STICKY、PERSIST、PER_UID、REBOOT 能力位，增加扩展 ABI 探测和处理器注册校验。原 ioctl 结构仍为 32 字节；旧 reserved 字段改为 api_version，旧客户端传入 0 时按 ABI 1 处理。
+[builtin 新增提交](https://github.com/SukiSU-Nova/SukiSU-Nova/commit/b59170724cdc05bf5dee8d8a8b182c5f1ddd60e3) 发布 STICKY、PERSIST、PER_UID、REBOOT 能力位，增加扩展 ABI 探测和处理器注册校验。原 ioctl 结构仍为 32 字节；旧 reserved 字段改为 api_version，旧客户端传入 0 时按 ABI 1 处理。
 
 本地兼容补丁仍可应用。新增宿主测试直接编译固定源码中的版本判断、能力校验、GET 和探测分发函数，核对结构大小及字段偏移，覆盖旧客户端、较新客户端、错误能力组合、过高最低 ABI、未知扩展、读取失败和空指针。完整构建的 hook 审计会在实际源码上执行这项测试。
 
 ## Manager 与五位版本号
 
-最新 Release 仍是 [v4.2.1-r2 / 41068](https://github.com/SukiSU-Ultra/SukiSU-Ultra/releases/tag/v4.2.1-r2)。最新成功的 [Build Manager 40585558597](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions/runs/40585558597) 对应 main `080ba098902c1ea8f09748536f9d920329e2f7ce`，实际下载文件为 `SukiSU_v4.2.1-r2_41097-release.apk`。determine-version 日志确认 main 提交数 3912，计算为 `40000 + 3912 - 2815 = 41097`。
+最新 Release 仍是 [v4.2.1-r2 / 41068](https://github.com/SukiSU-Nova/SukiSU-Nova/releases/tag/v4.2.1-r2)。最新成功的 [Build Manager 40585558597](https://github.com/SukiSU-Nova/SukiSU-Nova/actions/runs/40585558597) 对应 main `080ba098902c1ea8f09748536f9d920329e2f7ce`，实际下载文件为 `SukiSU_v4.2.1-r2_41097-release.apk`。determine-version 日志确认 main 提交数 3912，计算为 `40000 + 3912 - 2815 = 41097`。
 
-[41095 Action 到本次 Action](https://github.com/SukiSU-Ultra/SukiSU-Ultra/compare/96ceb4a42c50e27199a094264f62cfbafee77fa0...080ba098902c1ea8f09748536f9d920329e2f7ce) 新增扩展能力与 ABI 信息，以及由内核处理器表驱动的扩展页面。这属于实际功能和 UI 更新；加上此前相对 Release 的修复，符合选用 Action 版本的规则。因此驱动版本与默认值均固定为 **41097**。
+[41095 Action 到本次 Action](https://github.com/SukiSU-Nova/SukiSU-Nova/compare/96ceb4a42c50e27199a094264f62cfbafee77fa0...080ba098902c1ea8f09748536f9d920329e2f7ce) 新增扩展能力与 ABI 信息，以及由内核处理器表驱动的扩展页面。这属于实际功能和 UI 更新；加上此前相对 Release 的修复，符合选用 Action 版本的规则。因此驱动版本与默认值均固定为 **41097**。
 
 Manager APK SHA-256：`c13f4884b47e6648fb116ed49647eaa544ee54d6c30467b933164bdccf25aa5e`。Manager main 已包含 ABI 2 的枚举页面，builtin 本次仅包含 ABI 1 的能力发布；这两个分支分别记录，不能声称本次 builtin 已具备 main 的全部扩展枚举接口。
 
