@@ -21,25 +21,12 @@ Nova 30000 完整功能版已通过本地构建和发布验收。2026-11-16，�
 
 ## 下载与安装
 
-在 [Releases 的 Assets](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/latest) 下载适合设备和 ROM 的文件。此后维护者发布的内核只提供完整功能版，不再分别提供精简版或关闭 SELinux hide 的安装包。既有历史附件保留原样。
+内核 ZIP、SHA-256 和配套 Manager 的上游下载链接都在对应版本的 Release 说明里。 [打开当前正式版](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/latest)
 
-当前正式版可直接下载：[内核安装 ZIP（Nova 显示名版）](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/download/v2026.11.16-ksu30000/CANDIDATE_SukiSU_kebab_LOS24.0_extended-full-SUSFSv2.4.0-hide_K078365e_SU4bec532_KSU30000-Nova-label.zip) · [安装包 SHA-256](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/download/v2026.11.16-ksu30000/CANDIDATE_SukiSU_kebab_LOS24.0_extended-full-SUSFSv2.4.0-hide_K078365e_SU4bec532_KSU30000-Nova-label.zip.sha256)。
-
-| 文件 | 用途 |
-| --- | --- |
-| `CANDIDATE_…zip` | 可安装的 AnyKernel3 内核 ZIP |
-| `SukiSU_Nova_v3.0.0_30000-release.apk` | 与本版匹配的 Manager |
-| `SHA256SUMS` | 原始发布附件的哈希清单 |
-| `…-full-artifacts.zip` | 配置、工具与来源记录等完整交付归档，不能直接刷入 |
-| `Image` | 原始内核，不是完整 boot 镜像 |
-| `ksu_susfs-v2.4.0-arm64` | SUSFS 用户态工具 |
-
-GitHub 自动附带的 **Source code (zip/tar.gz)** 是源码。Manager APK 按对应版本的说明获取，五位版本号应与内核匹配。
-
-在 PowerShell 核对安装 ZIP 的 SHA-256，与安装包配套的校验文件比较：
+在 PowerShell 计算安装 ZIP 的 SHA-256，与 Release 说明中的值核对。
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath '.\CANDIDATE_你的内核包.zip'
+Get-FileHash -Algorithm SHA256 -LiteralPath '.\下载的内核包.zip'
 ```
 
 操作前解锁 Bootloader，备份 `boot_a`、`boot_b` 并保存哈希，记录活动槽位和 Fastboot 恢复方法。
