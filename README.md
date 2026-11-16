@@ -13,7 +13,7 @@
 | 内核 | LineageOS 4.19 |
 | 源码固定版本 | SukiSU Nova builtin 30000，SUSFS v2.4.0 |
 | 编译器 | Android Clang r614150，构建 16836431 |
-| 当前正式版 | [v2026.11.16-ksu30000](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/tag/v2026.11.16-ksu30000) |
+| 当前正式版 | [v2026.11.17-ksu30000-kpm](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/tag/v2026.11.17-ksu30000-kpm) |
 
 2026 年 11 月 16 日的 Nova 30000 发行版通过本地构建和 15 项真机检查。构建输入和产物哈希见[上游同步记录](docs/UPSTREAMS-20261116.md)。该发行版关闭 KPM。
 
@@ -21,7 +21,7 @@
 
 项目正式支持 KPM。维护者的本地完整构建默认启用 KPM，并使用固定版本的 SukiSU KernelPatch 和 Arm GNU 12.2.Rel1 构建加载器。安装包名称带有 `KPM`。
 
-SukiSU 41176 KPM 内核已在 KB2000 上验证。hello 模块连续 25 次加载、查询和卸载，AWDL 探针连续 25 次挂接和撤除 WLAN 回调。基于 KPM 的 AirDrop 模块也完成了与 iPhone 的双向文件传输。Nova 30000 的 KPM 构建需要独立完成真机验证。
+SukiSU 41176 KPM 内核已在 KB2000 上验证。hello 模块连续 25 次加载、查询和卸载，AWDL 探针连续 25 次挂接和撤除 WLAN 回调。基于 KPM 的 AirDrop 模块也完成了与 iPhone 的双向文件传输。Nova 30000 KPM 版本已通过维护者确认的 16 项真机检查，包括 KPM 加载和卸载。
 
 ## 下载与安装
 
