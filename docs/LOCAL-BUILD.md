@@ -18,7 +18,7 @@ python3 scripts/build/local.py
 
 后续构建可将示例分支替换为已审查的分支或提交。每次运行会创建独立检出，运行中的脚本不受外部入口文件修改影响。源码、补丁和工具链版本来自该提交的 pins。
 
-默认构建固定内核提交、SUSFS `extended-full`、SELinux hide 和 AnyKernel3 ZIP，并启用增量对象、ccache 与 ThinLTO 缓存。并行度按可用 CPU 和内存选择，最多 16；`--jobs` 可覆盖。Ubuntu 构建依赖：
+默认构建固定内核提交、SUSFS `extended-full`、SELinux hide、KPM 和 AnyKernel3 ZIP，并启用增量对象、ccache 与 ThinLTO 缓存。并行度按可用 CPU 和内存选择，最多 16；`--jobs` 可覆盖。Ubuntu 构建依赖：
 
 ```bash
 sudo apt update
@@ -52,6 +52,8 @@ sudo apt install -y bc bison build-essential ccache cpio curl file flex git jq l
 | `--check-only` | 只检查环境，不创建运行目录或启动编译 |
 | `--minimum-free-gib` | 默认 `0`，不设置启动容量门槛；可按需指定非负 GiB 数值 |
 
+KPM 构建需要在工作区 `toolchains` 中安装 Arm GNU Toolchain 12.2.Rel1（`aarch64-none-elf`），目录名和官方下载归档的 SHA-256 固定在 `config/build-pins.env`。预检会检查交叉编译器、链接器和 objcopy。
+
 预检不再要求剩余空间达到 50 GiB。只有显式指定 `--minimum-free-gib` 时，才按该值检查 Linux 工作区、编译库和导出位置。WSL 中显示的虚拟磁盘容量不能代替宿主存储剩余空间。内存预算用于选择启动并行度，不是运行时内存上限；可用 `--jobs` 降低并行度。
 
 ### 重复构建的缓存
@@ -82,7 +84,7 @@ python3 scripts/build/local.py --export-run ~/oneplus8t-kernel/runs/<运行编�
 
 ## 单一完整配置与验收
 
-从 2026-10-27 起，维护者一律只编译和发布完整功能版。默认命令只配置、编译一个 `extended-full + SELinux hide` Image，不再编译基线、smoke、minimal-mount 或其他验收组合。SUSFS 的全部现有子选项编译为 `y`，KPM 和 kprobes 继续关闭；运行时规则和隐藏开关按实际需要设置。
+从 2026-10-27 起，维护者一律只编译和发布完整功能版。默认命令只配置、编译一个 `extended-full + SELinux hide` Image，不再编译基线、smoke、minimal-mount 或其他验收组合。SUSFS 的全部现有子选项编译为 `y`，KPM 默认启用，kprobes 继续关闭；运行时规则和隐藏开关按实际需要设置。
 
 产物审计保留配置、必需符号、未解析符号、链接错误、源码变更白名单和哈希检查。编译警告与 Image 大小记录在审计目录；本次没有另编基线，不再生成跨配置的警告、符号或体积增长比较。
 

@@ -52,7 +52,8 @@ def check_run(root, candidate, susfs, profile, hide):
     if subprocess.run(['git', '-C', str(candidate), 'diff', '--quiet', 'HEAD', '--'], check=False).returncode:
         raise ValueError('Candidate tracked files differ from the build snapshot')
     fingerprint, kernel = fingerprints.compute_fingerprint(candidate, enable_susfs=susfs,
-                                                           profile=profile, enable_hide=hide)
+                                                           profile=profile, enable_hide=hide,
+                                                           enable_kpm=provenance.get('kpm') == 'y')
     required = {'execution_environment': 'local-wsl2', 'build_channel': 'candidate',
                 'builder_commit': head, 'kernel_commit': kernel, 'build_fingerprint': fingerprint,
                 'enable_susfs': susfs, 'enable_selinux_hide': hide, 'use_anykernel': 'true',
@@ -75,6 +76,8 @@ def check_run(root, candidate, susfs, profile, hide):
         required_stages.update(('references', 'audit-susfs', 'tool'))
     if hide == 'true':
         required_stages.add('audit-hide')
+    if provenance.get('kpm') == 'y':
+        required_stages.add('patch-kpm')
     if any(stages.get(stage) != 0 for stage in required_stages):
         raise ValueError('Required local audit stages are incomplete')
     name = provenance['package']
@@ -82,7 +85,8 @@ def check_run(root, candidate, susfs, profile, hide):
     return {'builder_commit': head, 'build_fingerprint': fingerprint, 'package': name,
             'package_sha256': package_sha, 'image_sha256': checked['image_sha256'],
             'config_sha256': checked['config_sha256'], 'system_map_sha256': checked['system_map_sha256'],
-            'tool_sha256': checked.get('tool_sha256'), 'local_run_id': provenance['local_run_id']}
+            'tool_sha256': checked.get('tool_sha256'), 'local_run_id': provenance['local_run_id'],
+            'kpm': provenance.get('kpm') == 'y'}
 
 
 def check_phone(phone, build):
@@ -96,7 +100,8 @@ def check_phone(phone, build):
     when = datetime.fromisoformat(phone.get('tested_at', ''))
     if when.tzinfo is None or when > datetime.now().astimezone():
         raise ValueError('Phone-test time must include timezone and cannot be in the future')
-    if not all(phone.get('checks', {}).get(check) is True for check in CHECKS):
+    checks = CHECKS + (('kpm_load_unload',) if build.get('kpm') else ())
+    if not all(phone.get('checks', {}).get(check) is True for check in checks):
         raise ValueError('All required phone checks must be explicitly true')
 
 
@@ -193,11 +198,12 @@ def main():
             provenance = fields(args.artifacts)
             build = {'builder_commit': provenance['builder_commit'], 'package': provenance['package'],
                       'local_run_id': provenance['local_run_id'], 'image_sha256': checked['image_sha256'],
+                      'kpm': provenance.get('kpm') == 'y',
                       'tool_sha256': checked.get('tool_sha256'),
                       'package_sha256': sha(args.artifacts / 'kernel' / provenance['package'])}
             build = check_repair(build, args.artifacts, args.repair_record)
             write_new(args.output, {**build, 'tester': '', 'tested_at': '',
-                                   'checks': dict.fromkeys(CHECKS, False), 'notes': ''})
+                                   'checks': dict.fromkeys(CHECKS + (('kpm_load_unload',) if build.get('kpm') else ()), False), 'notes': ''})
             return
         record = accept(args)
         if args.command == 'accept':

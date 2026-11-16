@@ -63,7 +63,7 @@ def target_platform(pins: dict[str, str]) -> tuple[str, str]:
 
 
 def compute_fingerprint(root: Path, *, enable_susfs: str = "true", profile: str = "extended-full",
-                        enable_hide: str = "true") -> tuple[str, str]:
+                        enable_hide: str = "true", enable_kpm: bool = False) -> tuple[str, str]:
     pins = load_pins(root)
     rom, _ = target_platform(pins)
     commit = kernel_commit(root, pins["KERNEL_PIN_PATH"])
@@ -115,6 +115,9 @@ def compute_fingerprint(root: Path, *, enable_susfs: str = "true", profile: str 
         ("enable_selinux_hide", enable_hide),
         ("use_anykernel", "true"),
     ]
+    if enable_kpm:
+        ordered.extend((("kernelpatch_repository", pins["KERNELPATCH_REPOSITORY"]),
+                        ("kernelpatch_commit", pins["KERNELPATCH_COMMIT"])))
     canonical = "".join(f"{key}={value}\n" for key, value in ordered) + file_hashes
     return hashlib.sha256(canonical.encode()).hexdigest(), commit
 

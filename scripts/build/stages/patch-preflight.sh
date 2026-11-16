@@ -91,6 +91,7 @@ cat > "$BUILD_TEMP/sukisu-compat-files.expected" <<'EOF'
 kernel/Makefile
 kernel/extension/cpu_spoof.c
 kernel/extension/dynamic_sig_fallback.c
+kernel/extension/kpm/kpm.c
 kernel/kernel_compat.h
 kernel/kernel_includes.h
 kernel/ksu_main.c

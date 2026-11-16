@@ -35,7 +35,11 @@ configure_tree() {
   scripts/config --file "$out/.config" -e KSU
   scripts/config --file "$out/.config" -d KPROBES
   scripts/config --file "$out/.config" -d KPROBE_EVENTS
-  scripts/config --file "$out/.config" -d KPM
+  if test "${ENABLE_KPM:-false}" = true; then
+    scripts/config --file "$out/.config" -e KPM
+  else
+    scripts/config --file "$out/.config" -d KPM
+  fi
   scripts/config --file "$out/.config" -e KALLSYMS
   scripts/config --file "$out/.config" -e KALLSYMS_ALL
   if test "$tree" = kernel_experiment && \
@@ -87,10 +91,14 @@ verify_common_config() {
   grep -q '^CONFIG_KALLSYMS=y$' "$config"
   grep -q '^CONFIG_KALLSYMS_ALL=y$' "$config"
   grep -q '^# CONFIG_KPROBES is not set$' "$config"
-  grep -q '^# CONFIG_KPM is not set$' "$config"
+  if test "${ENABLE_KPM:-false}" = true; then
+    grep -qx 'CONFIG_KPM=y' "$config"
+  else
+    grep -qx '# CONFIG_KPM is not set' "$config"
+  fi
   if grep -Eq \
-    '^CONFIG_(KPROBES|KPROBE_EVENTS|KPM)=[ym]$' "$config"; then
-    echo "::error::KPM or kprobes was enabled."
+    '^CONFIG_(KPROBES|KPROBE_EVENTS)=[ym]$' "$config"; then
+    echo "::error::kprobes was enabled."
     exit 1
   fi
 }
