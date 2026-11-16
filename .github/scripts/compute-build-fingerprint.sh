@@ -35,7 +35,7 @@ git -C "$root" ls-files -z -- \
   config/build-pins.env \
   config/migration-baseline-lineage-23.2.sha256 \
   '.github/scripts/*.sh' \
-  .github/workflows/build-sukisu-ultra.yml \
+  .github/workflows/build-sukisu-nova.yml \
   'patches/*.patch' \
   'scripts/build/*' |
   LC_ALL=C sort -z |

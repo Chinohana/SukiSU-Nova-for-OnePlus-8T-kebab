@@ -39,7 +39,7 @@ def main():
 #include <string.h>
 typedef unsigned int uid_t;
 #define KSU_MAX_PACKAGE_NAME 128
-#define KSU_PACKAGE_NAME "com.sukisu.ultra"
+#define KSU_PACKAGE_NAME "com.sukisu.nova"
 #define pr_info(...) ((void)0)
 #define pr_warn(...) ((void)0)
 struct uid_data;

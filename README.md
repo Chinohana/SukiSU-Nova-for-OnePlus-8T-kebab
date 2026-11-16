@@ -1,8 +1,8 @@
-# OnePlus 8T · SukiSU Ultra + SUSFS
+# OnePlus 8T · SukiSU Nova + SUSFS
 
 [![Checks](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/actions/workflows/control-tests.yml/badge.svg?branch=main)](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/actions/workflows/control-tests.yml)
 
-为 OnePlus 8T 的 LineageOS 24.0 构建 SukiSU Ultra 内核，基于 Linux 4.19 和 SukiSU `builtin`。维护者只编译和提供完整功能版：SUSFS `extended-full`、SELinux hide 和 AnyKernel3 安装包。
+为 OnePlus 8T 的 LineageOS 24.0 构建 SukiSU Nova 内核，基于 Linux 4.19 和 SukiSU `builtin`。维护者只编译和提供完整功能版：SUSFS `extended-full`、SELinux hide 和 AnyKernel3 安装包。
 
 [下载正式版本](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/latest) · [下载与安装](#下载与安装) · [自定义构建](docs/CUSTOM-BUILD.md) · [本地构建与发布](docs/LOCAL-BUILD.md)
 
@@ -13,33 +13,33 @@
 | 设备 | OnePlus 8T（`kebab`，已测试型号 KB2000） |
 | 系统 | LineageOS 24.0 / Android 17 / API 37 |
 | 内核 | Linux 4.19，LineageOS `lineage-24.0` |
-| 当前源码固定版本 | SukiSU builtin 41097、SUSFS v2.3.0 NON-GKI |
-| 最新正式发布 | [v2026.10.28-ksu41097](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/tag/v2026.10.28-ksu41097) |
-| 编译器 | Android Clang `r614150` |
+| 当前源码固定版本 | SukiSU Nova builtin 30000、SUSFS v2.4.0 |
+| 最新正式发布 | [v2026.11.16-ksu30000](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/tag/v2026.11.16-ksu30000) |
+| 编译器 | Android Clang `r614150`，构建 `16836431` |
 
-41097 完整功能版已完成本地构建、审计和交付校验。2026-10-28 维护者明确确认本次安装包的全部真机检查正常，本地验收绑定该包的精确哈希后发布。版本选择、扩展 ABI 变化和构建结果见[2026-10-28 上游同步](docs/UPSTREAMS-20261028.md)。
+Nova 30000 完整功能版已通过本地构建和发布验收。2026-11-16，维护者确认 15 项真机检查全部通过。构建输入和产物哈希见[本次上游同步记录](docs/UPSTREAMS-20261116.md)。
 
 ## 下载与安装
 
 在 [Releases 的 Assets](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/latest) 下载适合设备和 ROM 的文件。此后维护者发布的内核只提供完整功能版，不再分别提供精简版或关闭 SELinux hide 的安装包。既有历史附件保留原样。
 
-当前正式版可直接下载：[内核安装 ZIP](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/download/v2026.10.28-ksu41097/SukiSU-kebab-LOS24.0-KSU41097-20261028-AnyKernel3.zip) · [SHA256SUMS](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/download/v2026.10.28-ksu41097/SHA256SUMS)。
+当前正式版可直接下载：[内核安装 ZIP（Nova 显示名版）](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/download/v2026.11.16-ksu30000/CANDIDATE_SukiSU_kebab_LOS24.0_extended-full-SUSFSv2.4.0-hide_K078365e_SU4bec532_KSU30000-Nova-label.zip) · [安装包 SHA-256](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/download/v2026.11.16-ksu30000/CANDIDATE_SukiSU_kebab_LOS24.0_extended-full-SUSFSv2.4.0-hide_K078365e_SU4bec532_KSU30000-Nova-label.zip.sha256)。
 
 | 文件 | 用途 |
 | --- | --- |
-| `…-AnyKernel3.zip` | 可安装的内核 ZIP |
-| `SukiSU_v4.2.1-r2_41097-release.apk` | 与本版匹配的 Manager |
-| `SHA256SUMS` | 同版本附件的哈希清单 |
+| `CANDIDATE_…zip` | 可安装的 AnyKernel3 内核 ZIP |
+| `SukiSU_Nova_v3.0.0_30000-release.apk` | 与本版匹配的 Manager |
+| `SHA256SUMS` | 原始发布附件的哈希清单 |
 | `…-full-artifacts.zip` | 配置、工具与来源记录等完整交付归档，不能直接刷入 |
 | `Image` | 原始内核，不是完整 boot 镜像 |
-| `ksu_susfs-v2.3.0-arm64` | SUSFS 用户态工具 |
+| `ksu_susfs-v2.4.0-arm64` | SUSFS 用户态工具 |
 
 GitHub 自动附带的 **Source code (zip/tar.gz)** 是源码。Manager APK 按对应版本的说明获取，五位版本号应与内核匹配。
 
-在 PowerShell 核对安装 ZIP 的 SHA-256，与同一 Release 的清单比较：
+在 PowerShell 核对安装 ZIP 的 SHA-256，与安装包配套的校验文件比较：
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath '.\你的内核包-AnyKernel3.zip'
+Get-FileHash -Algorithm SHA256 -LiteralPath '.\CANDIDATE_你的内核包.zip'
 ```
 
 操作前解锁 Bootloader，备份 `boot_a`、`boot_b` 并保存哈希，记录活动槽位和 Fastboot 恢复方法。
@@ -60,7 +60,7 @@ SELinux hide 开启后，应用 UID（≥10000）读取 `/sys/fs/selinux` 的 po
 
 ## 自定义构建与维护
 
-需要关闭 SUSFS、关闭 SELinux hide 或选择其他 SUSFS 配置时，可以克隆项目后推送到自己的 GitHub 仓库，或直接 Fork，然后运行 **Build kebab SukiSU Ultra** 的 GitHub Actions。每次只构建所选的一个配置，步骤见[自定义构建](docs/CUSTOM-BUILD.md)。仅将源码克隆到本地不会获得 GitHub Actions 入口。
+需要关闭 SUSFS、关闭 SELinux hide 或选择其他 SUSFS 配置时，可以克隆项目后推送到自己的 GitHub 仓库，或直接 Fork，然后运行 **Build kebab SukiSU Nova** 的 GitHub Actions。每次只构建所选的一个配置，步骤见[自定义构建](docs/CUSTOM-BUILD.md)。仅将源码克隆到本地不会获得 GitHub Actions 入口。
 
 维护者继续在本地构建、验收和准备发布。默认命令只编译 `extended-full + SELinux hide` 的一个 Image，不再附带基线、smoke、minimal-mount 或四组合矩阵编译。正式发布核对该完整配置产物的哈希、审计结果及实际真机记录，见[本地操作手册](docs/LOCAL-BUILD.md)。
 
@@ -80,7 +80,7 @@ Dependabot 继续检查 LineageOS `lineage-24.0` 并创建候选 PR。源码检�
 
 ## 上游项目
 
-- [SukiSU Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra)：使用 `builtin` 分支。
+- [SukiSU Nova](https://github.com/SukiSU-Nova/SukiSU-Nova)：使用 `builtin` 分支。
 - [SUSFS4KSU](https://gitlab.com/simonpunk/susfs4ksu)
 - [AnyKernel3](https://github.com/osm0sis/AnyKernel3)
 - [LineageOS OnePlus SM8250 kernel](https://github.com/LineageOS/android_kernel_oneplus_sm8250)

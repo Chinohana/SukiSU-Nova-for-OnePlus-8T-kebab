@@ -73,7 +73,8 @@ def compute_fingerprint(root: Path, *, enable_susfs: str = "true", profile: str 
         "config/build-pins.env",
         "config/migration-baseline-lineage-23.2.sha256",
         ".github/scripts/*.sh",
-        ".github/workflows/build-sukisu-ultra.yml",
+        ".github/workflows/build-sukisu-nova.yml",
+        ".github/workflows/build-sukisu-ultra.yml",  # Retained for archived build fingerprints.
         "patches/*.patch",
         "scripts/build/*",
     ]

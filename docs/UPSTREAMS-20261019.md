@@ -38,4 +38,4 @@ Manager 扫描仍需本地修正：先解析当前 APK 包名，内置分支仅�
 
 本地执行严格补丁应用检查、十项 Manager 授权测试、挂载分类器测试及九项平台审批测试。完整编译由 PR 的 `Kernel candidate` 工作流执行，覆盖纯 SukiSU、SELinux hide、SUSFS extended-stat 和 extended-full + hide。构建成功后仍须对候选产物进行真机测试，并通过既有审批工作流；本次同步不沿用旧产物的批准。
 
-上游依据：[SukiSU 提交](https://github.com/SukiSU-Ultra/SukiSU-Ultra/commit/5ef32ad5d5eba3033f86467fd4fa094e032c5237)、[Manager 构建](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions/runs/39260333691)、[SUSFS 提交](https://gitlab.com/simonpunk/susfs4ksu/-/commit/f6c046775c0a14834748cc82c03f1d1b0285c206)。
+上游依据：[SukiSU 提交](https://github.com/SukiSU-Nova/SukiSU-Nova/commit/5ef32ad5d5eba3033f86467fd4fa094e032c5237)、[Manager 构建](https://github.com/SukiSU-Nova/SukiSU-Nova/actions/runs/39260333691)、[SUSFS 提交](https://gitlab.com/simonpunk/susfs4ksu/-/commit/f6c046775c0a14834748cc82c03f1d1b0285c206)。

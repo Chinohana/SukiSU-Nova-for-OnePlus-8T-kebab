@@ -29,7 +29,7 @@ if test "$ENABLE_SELINUX_HIDE" = "true"; then
   string_feature="${string_feature} SELinux hide"
 fi
 sed -i \
-  "s/^kernel.string=.*/kernel.string=${BUILD_CHANNEL^^} SukiSU Ultra kebab LOS${ROM_VERSION} ${string_feature} KSU${SUKISU_DRIVER_VERSION}/" \
+  "s/^kernel.string=.*/kernel.string=${BUILD_CHANNEL^^} SukiSU Nova kebab LOS${ROM_VERSION} ${string_feature} KSU${SUKISU_DRIVER_VERSION}/" \
   AnyKernel3/anykernel.sh
 sed -i 's/^do.devicecheck=.*/do.devicecheck=1/' \
   AnyKernel3/anykernel.sh
@@ -56,7 +56,7 @@ sed -i 's/^dump_boot;.*/split_boot;/' AnyKernel3/anykernel.sh
 sed -i 's/^write_boot;.*/flash_boot;/' AnyKernel3/anykernel.sh
 
 grep -Fqx \
-  "kernel.string=${BUILD_CHANNEL^^} SukiSU Ultra kebab LOS${ROM_VERSION} ${string_feature} KSU${SUKISU_DRIVER_VERSION}" \
+  "kernel.string=${BUILD_CHANNEL^^} SukiSU Nova kebab LOS${ROM_VERSION} ${string_feature} KSU${SUKISU_DRIVER_VERSION}" \
   AnyKernel3/anykernel.sh
 grep -q '^device.name1=OnePlus8T$' AnyKernel3/anykernel.sh
 grep -q '^device.name2=KB2000$' AnyKernel3/anykernel.sh

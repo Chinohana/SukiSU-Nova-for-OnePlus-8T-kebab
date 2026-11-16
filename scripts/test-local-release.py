@@ -197,14 +197,14 @@ class PhoneEvidence(unittest.TestCase):
 class MaintainedBuildPolicy(unittest.TestCase):
     def test_custom_action_is_manual_and_kept_out_of_the_maintained_repository(self):
         workflow = ROOT / '.github/workflows'
-        build = (workflow / 'build-sukisu-ultra.yml').read_text()
+        build = (workflow / 'build-sukisu-nova.yml').read_text()
         for trigger in ('  push:', '  pull_request:', '  workflow_call:'):
             self.assertNotIn(trigger, build)
         self.assertIn("if: github.repository != 'Chinohana/oneplus-8t-kebab-sukisu-ultra-actions'", build)
         self.assertIn('run: bash scripts/build/custom-action.sh', build)
         for file in workflow.glob('*.yml'):
             text = file.read_text()
-            self.assertNotIn('uses: ./.github/workflows/build-sukisu-ultra.yml', text)
+            self.assertNotIn('uses: ./.github/workflows/build-sukisu-nova.yml', text)
             self.assertNotIn('run-stage.sh compile', text)
         approval = (workflow / 'approve-kernel-candidate.yml').read_text()
         self.assertNotIn('gh api', approval)

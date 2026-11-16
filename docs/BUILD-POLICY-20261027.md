@@ -4,7 +4,7 @@
 
 用户需要特定配置时，在自己的 GitHub 仓库手动运行自定义工作流。主仓库继续本地维护，工作流产物不自动成为正式 Release。
 
-重新核实的上游 Manager 最新成功运行是 [40390221573](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions/runs/40390221573)，版本为 **41095**；manager-ci 的 arm64 附件为 `SukiSU_v4.2.1-r2_41095-arm64-v8a-release.apk`。相比最新 Release 41068，包含实质 Bug 修复、功能及 UI 更新，应按既定规则选择 Action 版本。此次只调整构建策略和文档，尚未将新 builtin 源码或 41095 同步到构建 pins，也未声称完成其编译或真机验收。
+重新核实的上游 Manager 最新成功运行是 [40390221573](https://github.com/SukiSU-Nova/SukiSU-Nova/actions/runs/40390221573)，版本为 **41095**；manager-ci 的 arm64 附件为 `SukiSU_v4.2.1-r2_41095-arm64-v8a-release.apk`。相比最新 Release 41068，包含实质 Bug 修复、功能及 UI 更新，应按既定规则选择 Action 版本。此次只调整构建策略和文档，尚未将新 builtin 源码或 41095 同步到构建 pins，也未声称完成其编译或真机验收。
 
 PR #33 原有下载优先的结构予以保留，修正过时的 Release 链接、与当前主线的文档冲突，以及未完成的句子。当前正式发布仍为 41057；41074 的本地候选与新上游版本分开记录。
 
