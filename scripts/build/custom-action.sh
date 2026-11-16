@@ -31,7 +31,7 @@ curl -fL --retry 3 \
 sha256sum "$BUILD_TEMP/clang.tar.gz" > audit/toolchain-downloads.sha256
 tar -xzf "$BUILD_TEMP/clang.tar.gz" -C toolchains/clang
 toolchains/clang/bin/clang --version | tee audit/clang-version.txt
-grep -Fq "${CLANG_REVISION#clang-}" audit/clang-version.txt
+grep -Fq "Android (${CLANG_BUILD_NUMBER}, based on ${CLANG_REVISION#clang-})" audit/clang-version.txt
 rm "$BUILD_TEMP/clang.tar.gz"
 if test "$ENABLE_SUSFS" = true; then
   curl -fL --retry 3 https://dl.google.com/android/repository/android-ndk-r30-linux.zip -o "$BUILD_TEMP/ndk.zip"
