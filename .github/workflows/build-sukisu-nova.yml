@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   local-build-entry:
-    if: github.repository == 'Chinohana/oneplus-8t-kebab-sukisu-ultra-actions'
+    if: github.repository_id == '1315219539'
     runs-on: ubuntu-24.04
     steps:
       - name: Show maintained build policy
@@ -30,7 +30,7 @@ jobs:
           echo 'Maintained builds and releases use the local full-feature configuration.'
           echo 'For a custom configuration, fork this repository and run this workflow there.'
   custom-build:
-    if: github.repository != 'Chinohana/oneplus-8t-kebab-sukisu-ultra-actions'
+    if: github.repository_id != '1315219539'
     runs-on: ubuntu-24.04
     timeout-minutes: 180
     env:

@@ -31,4 +31,4 @@
 
 ## 2026-10-28 发布补记
 
-AnyKernel3 安装脚本修复后，维护者确认修复包的安装、启动及全部真机检查正常。本地验收核对原完整构建和修复包后通过，已发布 [v2026.10.28-ksu41095](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/tag/v2026.10.28-ksu41095)。修复内容、包哈希及确认方式见[安装修复记录](INSTALLER-FIX-20261028.md)。
+AnyKernel3 安装脚本修复后，维护者确认修复包的安装、启动及全部真机检查正常。本地验收核对原完整构建和修复包后通过，已发布 [v2026.10.28-ksu41095](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/tag/v2026.10.28-ksu41095)。修复内容、包哈希及确认方式见[安装修复记录](INSTALLER-FIX-20261028.md)。

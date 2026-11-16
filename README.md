@@ -1,10 +1,10 @@
-# OnePlus 8T · SukiSU Nova + SUSFS
+# SukiSU Nova for OnePlus 8T kebab
 
-[![Checks](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/actions/workflows/control-tests.yml/badge.svg?branch=main)](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/actions/workflows/control-tests.yml)
+[![Checks](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/actions/workflows/control-tests.yml/badge.svg?branch=main)](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/actions/workflows/control-tests.yml)
 
 为 OnePlus 8T 的 LineageOS 24.0 构建 SukiSU Nova 内核，基于 Linux 4.19 和 SukiSU `builtin`。维护者只编译和提供完整功能版：SUSFS `extended-full`、SELinux hide 和 AnyKernel3 安装包。
 
-[下载正式版本](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/latest) · [下载与安装](#下载与安装) · [自定义构建](docs/CUSTOM-BUILD.md) · [本地构建与发布](docs/LOCAL-BUILD.md)
+[下载正式版本](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/latest) · [下载与安装](#下载与安装) · [自定义构建](docs/CUSTOM-BUILD.md) · [本地构建与发布](docs/LOCAL-BUILD.md)
 
 ## 支持范围与版本
 
@@ -14,16 +14,16 @@
 | 系统 | LineageOS 24.0 / Android 17 / API 37 |
 | 内核 | Linux 4.19，LineageOS `lineage-24.0` |
 | 当前源码固定版本 | SukiSU Nova builtin 30000、SUSFS v2.4.0 |
-| 最新正式发布 | [v2026.11.16-ksu30000](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/tag/v2026.11.16-ksu30000) |
+| 最新正式发布 | [v2026.11.16-ksu30000](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/tag/v2026.11.16-ksu30000) |
 | 编译器 | Android Clang `r614150`，构建 `16836431` |
 
 Nova 30000 完整功能版已通过本地构建和发布验收。2026-11-16，维护者确认 15 项真机检查全部通过。构建输入和产物哈希见[本次上游同步记录](docs/UPSTREAMS-20261116.md)。
 
 ## 下载与安装
 
-在 [Releases 的 Assets](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/latest) 下载适合设备和 ROM 的文件。此后维护者发布的内核只提供完整功能版，不再分别提供精简版或关闭 SELinux hide 的安装包。既有历史附件保留原样。
+在 [Releases 的 Assets](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/latest) 下载适合设备和 ROM 的文件。此后维护者发布的内核只提供完整功能版，不再分别提供精简版或关闭 SELinux hide 的安装包。既有历史附件保留原样。
 
-当前正式版可直接下载：[内核安装 ZIP（Nova 显示名版）](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/download/v2026.11.16-ksu30000/CANDIDATE_SukiSU_kebab_LOS24.0_extended-full-SUSFSv2.4.0-hide_K078365e_SU4bec532_KSU30000-Nova-label.zip) · [安装包 SHA-256](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/releases/download/v2026.11.16-ksu30000/CANDIDATE_SukiSU_kebab_LOS24.0_extended-full-SUSFSv2.4.0-hide_K078365e_SU4bec532_KSU30000-Nova-label.zip.sha256)。
+当前正式版可直接下载：[内核安装 ZIP（Nova 显示名版）](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/download/v2026.11.16-ksu30000/CANDIDATE_SukiSU_kebab_LOS24.0_extended-full-SUSFSv2.4.0-hide_K078365e_SU4bec532_KSU30000-Nova-label.zip) · [安装包 SHA-256](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/download/v2026.11.16-ksu30000/CANDIDATE_SukiSU_kebab_LOS24.0_extended-full-SUSFSv2.4.0-hide_K078365e_SU4bec532_KSU30000-Nova-label.zip.sha256)。
 
 | 文件 | 用途 |
 | --- | --- |
@@ -76,7 +76,7 @@ TA Enhanced v5.53.1 会停止 LineageOS 充电 HAL，导致软重启卡在启动
 
 Dependabot 继续检查 LineageOS `lineage-24.0` 并创建候选 PR。源码检查通过后，在本地构建完整功能版；产物或输入变化后，旧真机记录不能用于新候选。Android 系统、驱动二进制文件和应用层修复仍需更新 ROM。
 
-23.2 的最后版本保存在 [archive/lineage-23.2-final](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/tree/archive/lineage-23.2-final)。`SUSFS`、`legacy` 及实验分支用于追溯，不作为当前默认下载入口。[文档目录](docs/README.md) 区分现行手册与历史记录；历史四组合测试不再是新构建的要求。
+23.2 的最后版本保存在 [archive/lineage-23.2-final](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/tree/archive/lineage-23.2-final)。`SUSFS`、`legacy` 及实验分支用于追溯，不作为当前默认下载入口。[文档目录](docs/README.md) 区分现行手册与历史记录；历史四组合测试不再是新构建的要求。
 
 ## 上游项目
 

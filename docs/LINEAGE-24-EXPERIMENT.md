@@ -21,8 +21,8 @@ SukiSU `builtin` 41001、SUSFS v2.3、Clang r563880、NDK 和 AnyKernel3 沿用�
 | 记录 | 标识 |
 | --- | --- |
 | 真机测试候选 | `7243b36efb97f858ed9332b689298ae543ff58a7` |
-| 四种配置构建 | [39033909465](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/actions/runs/39033909465)、[39103352341](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/actions/runs/39103352341)，均通过 |
-| 真机批准 | [39103292520](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/actions/runs/39103292520)，机主确认后核验通过 |
+| 四种配置构建 | [39033909465](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/actions/runs/39033909465)、[39103352341](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/actions/runs/39103352341)，均通过 |
+| 真机批准 | [39103292520](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/actions/runs/39103292520)，机主确认后核验通过 |
 | 手机活动 boot 分区的 Image SHA-256 | `f49876ef3cd48e8b0462e663c1871857707da8e9fad0c8dcca1ce3be0a86e913` |
 | 批准的 ZIP SHA-256 | `9377d0b3fd26566f6b137feceb3b226e67d5be558806bb4722dc3498de529443` |
 
@@ -40,7 +40,7 @@ SukiSU `builtin` 41001、SUSFS v2.3、Clang r563880、NDK 和 AnyKernel3 沿用�
 
 ## 主线切换与 23.2 归档
 
-合并前，先将最终 23.2 主线保存到 `archive/lineage-23.2-final`，并核对远端指向 `c779ee8c6287a37b21e0eb8ee43e80e7a673043b`。随后合并 [PR #27](https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions/pull/27)，合并提交为 `db51e6e710fd9aa1e7bcf529ba9fca05f4027e67`。
+合并前，先将最终 23.2 主线保存到 `archive/lineage-23.2-final`，并核对远端指向 `c779ee8c6287a37b21e0eb8ee43e80e7a673043b`。随后合并 [PR #27](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/pull/27)，合并提交为 `db51e6e710fd9aa1e7bcf529ba9fca05f4027e67`。
 
 ## 后续候选怎样测试
 

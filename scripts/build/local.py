@@ -187,7 +187,7 @@ def build(args):
         subprocess.run(['git', 'clone', '--no-hardlinks', str(ROOT), str(target)], check=True)
         subprocess.run(['git', '-C', str(target), 'checkout', '--detach', commit], check=True)
         subprocess.run(['git', '-C', str(target), 'remote', 'set-url', 'origin',
-                        'https://github.com/Chinohana/oneplus-8t-kebab-sukisu-ultra-actions.git'], check=True)
+                        'https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab.git'], check=True)
         temp = target / 'build-temp'
         temp.mkdir()
         audit = target / 'audit'
