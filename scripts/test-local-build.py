@@ -113,12 +113,15 @@ class Preflight(unittest.TestCase):
                 executable.chmod(0o755)
             (root / 'source.properties').write_text('Pkg.Revision = 0\n')
             args = SimpleNamespace(workspace=root, clang=root, ndk=root, enable_susfs='true')
+            pins = local.pins(local.ROOT)
+            revision = pins['CLANG_REVISION'].removeprefix('clang-')
+            clang_version = f"Android ({pins['CLANG_BUILD_NUMBER']}, based on {revision})"
             with patch.object(local.shutil, 'which', return_value='/test/bin'), patch.object(local, 'run',
-                    side_effect=['x86_64', 'ext4', 'wrong clang']):
-                with self.assertRaisesRegex(ValueError, 'Clang revision'):
+                    side_effect=['x86_64', 'ext4', f'Android (16713961, based on {revision})']):
+                with self.assertRaisesRegex(ValueError, 'Clang version'):
                     local.preflight(args)
             with patch.object(local.shutil, 'which', return_value='/test/bin'), patch.object(local, 'run',
-                    side_effect=['x86_64', 'ext4', local.pins(local.ROOT)['CLANG_REVISION']]):
+                    side_effect=['x86_64', 'ext4', clang_version]):
                 with self.assertRaisesRegex(ValueError, 'NDK revision'):
                     local.preflight(args)
 

@@ -109,8 +109,9 @@ def preflight(args):
         if not os.access(args.clang / 'bin' / name, os.X_OK):
             raise ValueError(f'Missing Clang tool: {name}')
     clang_version = run(str(args.clang / 'bin/clang'), '--version')
-    if p['CLANG_REVISION'].removeprefix('clang-') not in clang_version:
-        raise ValueError('Clang revision does not match pins')
+    clang_build = f"Android ({p['CLANG_BUILD_NUMBER']}, based on {p['CLANG_REVISION'].removeprefix('clang-')})"
+    if clang_build not in clang_version:
+        raise ValueError(f'Clang version does not match pins: expected {clang_build}')
     if args.enable_susfs == 'true':
         if not os.access(args.ndk / 'ndk-build', os.X_OK):
             raise ValueError('Missing Linux NDK')
@@ -341,7 +342,7 @@ def main():
     if args.jobs is None:
         args.jobs = automatic_jobs()
     p = pins(ROOT)
-    defaults = {'clang': args.workspace / 'toolchains' / p['CLANG_REVISION'],
+    defaults = {'clang': args.workspace / 'toolchains' / f"{p['CLANG_REVISION']}-{p['CLANG_BUILD_NUMBER']}",
                 'ndk': args.workspace / 'toolchains/android-ndk-r30',
                 'cache_dir': args.workspace / 'cache/pipeline-ccache',
                 'object_cache_dir': args.workspace / 'cache/compile-objects',
