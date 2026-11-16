@@ -350,7 +350,7 @@ def main():
     for option in ('enable-susfs', 'enable-selinux-hide', 'use-anykernel', 'use-ccache'):
         parser.add_argument('--' + option, choices=['true', 'false'] if option == 'use-ccache' else ['true'], default='true')
     parser.add_argument('--kernel-source', choices=['approved-pin', 'latest-lineage-24.0'], default='approved-pin')
-    parser.add_argument('--enable-kpm', action='store_true', help='Build an experimental KPM candidate')
+    parser.add_argument('--enable-kpm', action='store_true', default=True, help='Enable KPM')
     parser.add_argument('--check-only', action='store_true')
     parser.add_argument('--export-run', type=Path, help='Retry export of a completed run without rebuilding')
     args = parser.parse_args()

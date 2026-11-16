@@ -31,6 +31,13 @@ class PhoneEvidence(unittest.TestCase):
     def test_complete_evidence_passes(self):
         release.check_phone(self.phone, self.build)
 
+    def test_kpm_release_requires_module_test(self):
+        build = {**self.build, 'kpm': True}
+        with self.assertRaisesRegex(ValueError, 'explicitly true'):
+            release.check_phone(self.phone, build)
+        self.phone['checks']['kpm_load_unload'] = True
+        release.check_phone(self.phone, build)
+
     def test_unchecked_form_rejected(self):
         self.phone['checks'] = dict.fromkeys(release.CHECKS, False)
         with self.assertRaisesRegex(ValueError, 'explicitly true'):
