@@ -21,7 +21,7 @@
 
 ## KPM
 
-项目正式支持 KPM。维护者的本地完整构建默认启用 KPM，并使用固定版本的 SukiSU KernelPatch 和 Arm GNU 12.2.Rel1 构建加载器。安装包名称带有 `KPM`。
+项目正式支持 KPM。维护者的本地完整构建默认启用 KPM，使用固定版本的 SukiSU KernelPatch 和 Arm GNU 15.3.Rel2 构建加载器。安装包名称带有 `KPM`。
 
 SukiSU 41176 KPM 内核已在 KB2000 上验证。hello 模块连续 25 次加载、查询和卸载，AWDL 探针连续 25 次挂接和撤除 WLAN 回调。基于 KPM 的 AirDrop 模块也完成了与 iPhone 的双向文件传输。Nova 30000 KPM 版本已通过维护者确认的 16 项真机检查，包括 KPM 加载和卸载。
 

@@ -52,7 +52,7 @@ sudo apt install -y bc bison build-essential ccache cpio curl file flex git jq l
 | `--check-only` | 只检查环境，不创建运行目录或启动编译 |
 | `--minimum-free-gib` | 默认 `0`，不设置启动容量门槛；可按需指定非负 GiB 数值 |
 
-KPM 构建需要在工作区 `toolchains` 中安装 Arm GNU Toolchain 12.2.Rel1（`aarch64-none-elf`），目录名和官方下载归档的 SHA-256 固定在 `config/build-pins.env`。预检会检查交叉编译器、链接器和 objcopy。
+KPM 加载器使用 Arm GNU Toolchain 15.3.Rel2（Linux x86-64 主机，`aarch64-none-elf` 目标）。按 `config/build-pins.env` 核对归档的 SHA-256，再解压到工作区的 `toolchains`。预检会检查交叉编译器、链接器和 objcopy。[Arm 官方归档](https://gitlab.arm.com/api/v4/projects/10698/packages/generic/gnu-toolchain/15.3.rel2/arm-gnu-toolchain-15.3.rel2-x86_64-aarch64-none-elf.tar.xz)
 
 预检不再要求剩余空间达到 50 GiB。只有显式指定 `--minimum-free-gib` 时，才按该值检查 Linux 工作区、编译库和导出位置。WSL 中显示的虚拟磁盘容量不能代替宿主存储剩余空间。内存预算用于选择启动并行度，不是运行时内存上限；可用 `--jobs` 降低并行度。
 
