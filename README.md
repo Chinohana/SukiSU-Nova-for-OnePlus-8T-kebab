@@ -11,11 +11,13 @@
 | 设备 | OnePlus 8T，代号 kebab；已测试 KB2000 |
 | 系统 | LineageOS 24.0，Android 17 |
 | 内核 | LineageOS 4.19 |
-| 源码固定版本 | SukiSU Nova builtin 30000，SUSFS v2.4.0 |
+| 源码固定版本 | SukiSU Nova builtin，驱动版本 35095，SUSFS v2.4.0 |
 | 编译器 | Android Clang r614150，构建 16836431 |
 | 当前正式版 | [v2026.11.17-ksu30000-kpm](https://github.com/Chinohana/SukiSU-Nova-for-OnePlus-8T-kebab/releases/tag/v2026.11.17-ksu30000-kpm) |
 
 2026 年 11 月 16 日的 Nova 30000 发行版通过本地构建和 15 项真机检查。构建输入和产物哈希见[上游同步记录](docs/UPSTREAMS-20261116.md)。该发行版关闭 KPM。
+
+35095 的源码和 Manager 版本见[2026-11-25 上游同步记录](docs/UPSTREAMS-20261125.md)。
 
 ## KPM
 
